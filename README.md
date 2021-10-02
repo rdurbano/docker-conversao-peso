@@ -22,7 +22,8 @@ Cria a imagem baseada no container, não é possível versionar, não é possív
 <b>Dockerfile   </b>
 Imagem baseada em uma receita, forma recomendada. Utiliza o conceito de camadas para construção da imagem, após a execução é mantido em cache, qualquer alteração no arquivo docker , ocorre a execução novamente.
 
-<b>Comando no dockerfile   </b>
+<b> Comando no dockerfile   </b>
+
 ![image](https://user-images.githubusercontent.com/12244452/135704790-b81d3a7f-b453-4546-96da-b67a8ab2d2ac.png)
 
 
@@ -115,7 +116,6 @@ Eliminar imagens não vinculadas a repositórios|docker image prune
 Eliminar uma imagem|docker image rm IMAGE_ID
 Ver os dados de uma imagem|docker image inspect IMAGE_ID
 Ver o histórico de comandos executados na imagem |docker image history IMAGE_ID
-![image](https://user-images.githubusercontent.com/12244452/135704913-5ca86e9b-1ac4-4920-89dd-be609372679a.png)
 
 
 
