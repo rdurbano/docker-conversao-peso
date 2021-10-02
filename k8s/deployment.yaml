@@ -1,0 +1,50 @@
+#Deployment App Converter peso
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appconverter-peso
+spec:
+  replicas: 3 #replicas do POD
+  selector:   #qual POD sera selecionado
+    matchLabels: 
+      app: appconverter-peso
+  template:
+    metadata: 
+      labels: 
+        app: appconverter-peso
+    spec:
+      containers: 
+        - name: appconverter-peso
+          image: rdurbano/docker_conversao_peso:v1
+          ports:
+            - containerPort: 80
+
+
+---            
+#Service App Converter peso
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: appconverter-peso
+spec:
+  selector:
+    app: appconverter-peso
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30000
+  type: NodePort
+
+
+
+
+
+# A porta 5000 é padrão do .Net, mas vc não vai utilizar a 5000, mas a 80.
+
+# O motivo é que a imagem Docker mcr.microsoft.com/dotnet/aspnet, altera o valor da variável ASPNETCORE_URLS para http://+:80/, você pode verificar isso executando:
+# docker run --rm mcr.microsoft.com/dotnet/aspnet printenv ASPNETCORE_URLS
+
+
+# ou para ver todas as variáveis:
+# docker run --rm mcr.microsoft.com/dotnet/aspnet printenv
